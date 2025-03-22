@@ -64,9 +64,8 @@ Follow the steps below to set up the Markdown Helper script on your system:
 1. **Clone the Repository**:
    - Open a terminal and run:
      ```bash
-     git clone https://github.com/your-username/MDHelper.git
+     git clone https://github.com/Digivagyok/MDHelper.git
      ```
-   - Replace `your-username` with the actual username if hosted on GitHub.
 
 2. **Add the Script to Environment Variables**:
    - Copy the full path of the [MDHelper.lua](http://_vscodecontentref_/3) file (e.g., `/path/to/MDHelper/MDHelper.lua`).
