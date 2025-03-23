@@ -244,6 +244,17 @@ function InsertMultiLineCodeFromFile(file, srcFile, startLine, endLine, language
     file:write("```\n")
 end
 
+function InsertNoteBlock(file, ...)
+    file:write("> [!NOTE] \n")
+    file:write(">")
+
+    local words = {...}
+    for _, value in pairs(words) do
+        file:write(" " .. value)
+    end
+    file:write("\n")
+end
+
 function ErrorScreen()
     print("Error: Invalid insertion method: " .. tostring(insertArg))
     print("Run 'lua markDownHelper.lua --help' for a list of valid methods.")
@@ -312,6 +323,7 @@ insertionMethods["bi"] = InsertBoldItalic
 insertionMethods["c"] = InsertSingleLineCode
 insertionMethods["mc"] = InsertMultiLineCodeFromFile
 insertionMethods["cc"] = InsertMultiLineCodeFromFile
+insertionMethods["in"] = InsertNoteBlock
 
 -- main
 -- remove the ".\" prefix 
