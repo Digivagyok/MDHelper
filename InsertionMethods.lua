@@ -53,6 +53,36 @@ function OpenOrCreate(filename)
     return io.open(filename, "a+")
 end
 
+function GetRelativePath(from, to)
+    local function splitPath(path)
+        local parts = {}
+        for part in string.gmatch(path, "[^\\/]+") do
+            table.insert(parts, part)
+        end
+        return parts
+    end
+
+    local fromParts = splitPath(from)
+    local toParts = splitPath(to)
+
+    -- Find the common base path
+    local commonIndex = 1
+    while commonIndex <= #fromParts and commonIndex <= #toParts and fromParts[commonIndex] == toParts[commonIndex] do
+        commonIndex = commonIndex + 1
+    end
+
+    -- Calculate the relative path
+    local relativePath = {}
+    for i = commonIndex, #fromParts - 1 do
+        table.insert(relativePath, "..")
+    end
+    for i = commonIndex, #toParts do
+        table.insert(relativePath, toParts[i])
+    end
+
+    return table.concat(relativePath, "/")
+end
+
 function unpack(t, i)
     i = i or 1 -- Default index to 1 if not provided
     if i > #t then
@@ -143,7 +173,9 @@ function InsertLink(file, src, altText)
     src = string.gsub(src, "\\", "/") or "link"
     altText = altText or "Link"
 
-    file:write("[" .. altText .. "](" .. src .. ")\n")
+    local relativePath = GetRelativePath(file:seek("set"), src)
+
+    file:write("[" .. altText .. "](" .. relativePath .. ")\n")
 end
 
 function InsertTable(file, rows, cols, ...)
