@@ -20,7 +20,7 @@ os.execute(createNewFile)
 
 local defaultNoteFile = "README.md"
 
-local linkNewFile = "powershell -Command mdh " .. defaultNoteFile .. " link " .. fileName .. " " .. baseName
+local linkNewFile = "powershell -Command mdh " .. defaultNoteFile .. " link " .. string.gsub(fileName, "\\", "/") .. " " .. baseName
 os.execute(linkNewFile)
 
 local openeditor = "nvim " .. fileName

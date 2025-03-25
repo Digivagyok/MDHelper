@@ -133,14 +133,14 @@ function InsertBlockQuote(file, num, depth)
 end
 
 function InsertImage(file, src, altText)
-    src = src or "link"
+    src = string.gsub(src, "\\", "/") or "link"
     altText = altText or "Alt"
 
     file:write("![" .. altText .. "](" .. src .. ")\n")
 end
 
 function InsertLink(file, src, altText)
-    src = src or "link"
+    src = string.gsub(src, "\\", "/") or "link"
     altText = altText or "Link"
 
     file:write("[" .. altText .. "](" .. src .. ")\n")

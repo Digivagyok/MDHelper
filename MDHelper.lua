@@ -1,3 +1,6 @@
+local scriptDir = debug.getinfo(1, "S").source:match("@(.*[\\/])")
+package.path = scriptDir .. "?.lua;" .. package.path
+
 require("InsertionMethods")
 
 local filename = arg[1] or "newMarkDown.md"
