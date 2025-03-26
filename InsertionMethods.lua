@@ -54,6 +54,10 @@ function OpenOrCreate(filename)
 end
 
 function GetRelativePath(from, to)
+    if to:sub(1, 2) == ".\\" or to:sub(1, 2) == "./" then
+        to = to:sub(3)
+    end
+
     local function splitPath(path)
         local parts = {}
         for part in string.gmatch(path, "[^\\/]+") do
@@ -73,7 +77,7 @@ function GetRelativePath(from, to)
 
     -- Calculate the relative path
     local relativePath = {}
-    for i = commonIndex, #fromParts - 1 do
+    for i = 1, commonIndex - 1 do
         table.insert(relativePath, "..")
     end
     for i = commonIndex, #toParts do
