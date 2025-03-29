@@ -139,15 +139,3 @@ To contribute:
 ## License
 
 This project is licensed under the MIT License. You are free to use, modify, and distribute this software. See the `LICENSE` file for more details.
-[NewNote](../Notes/NewNote_2025-03-26_14-32-35.md)
-
-
-[Link](../../Notes/NewNote_2025-03-26_14-32-35.md)
-
-[Link](../../Notes/NewNote_2025-03-26_14-32-35.md)
-
-[Link](../../Notes/NewNote_2025-03-26_14-32-35.md)
-
-[Link](Notes/NewNote_2025-03-26_14-32-35.md)
-
-[Link](NewNote_2025-03-26_14-32-35.md)
